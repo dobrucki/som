@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Canvas fx:id="plot" height="572.0" layoutX="14.0" layoutY="14.0" width="572.0" />
+      <VBox alignment="TOP_CENTER" layoutX="600.0" layoutY="14.0" prefHeight="572.0" prefWidth="206.0" spacing="3.0">
+         <children>
+            <Label text="Label" />
+            <TextField />
+            <Label layoutX="10.0" layoutY="10.0" text="Label" />
+            <TextField layoutX="10.0" layoutY="27.0" />
+            <Label layoutX="10.0" layoutY="54.0" text="Label" />
+            <TextField layoutX="10.0" layoutY="71.0" />
+            <Label layoutX="10.0" layoutY="98.0" text="Label" />
+            <TextField layoutX="10.0" layoutY="115.0" />
+            <Label layoutX="10.0" layoutY="142.0" text="Label" />
+            <TextField layoutX="10.0" layoutY="159.0" />
+            <Label layoutX="96.0" layoutY="210.0" text="Label" />
+            <ChoiceBox prefWidth="206.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ChoiceBox>
+            <Label layoutX="96.0" layoutY="260.0" text="Label">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField />
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" prefWidth="206.0" text="Start">
+               <VBox.margin>
+                  <Insets top="110.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Avenir Black" size="18.0" />
+               </font>
+            </Button>
+            <ProgressBar prefWidth="206.0" progress="0.0">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </ProgressBar>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
