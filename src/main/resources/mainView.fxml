@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
@@ -26,11 +28,18 @@
             <TextField layoutX="10.0" layoutY="115.0" />
             <Label layoutX="10.0" layoutY="142.0" text="Label" />
             <TextField layoutX="10.0" layoutY="159.0" />
-            <Label layoutX="96.0" layoutY="210.0" text="Label" />
+            <Label layoutX="96.0" layoutY="210.0" text="Algorytm" />
             <ChoiceBox prefWidth="206.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Kohonen" />
+                     <String fx:value="gaz neuronowy" />
+                     <String fx:value="k-średnich" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
             <Label layoutX="96.0" layoutY="260.0" text="Label">
                <VBox.margin>
@@ -39,7 +48,7 @@
             </Label>
             <TextField />
             <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" prefWidth="206.0" text="Start">
+            <Button mnemonicParsing="false" onAction="#handleStart" prefWidth="206.0" text="Start">
                <VBox.margin>
                   <Insets top="110.0" />
                </VBox.margin>
@@ -47,7 +56,7 @@
                   <Font name="Avenir Black" size="18.0" />
                </font>
             </Button>
-            <ProgressBar prefWidth="206.0" progress="0.0">
+            <ProgressBar prefWidth="206.0" progress="0.0" fx:id="progressBar">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
