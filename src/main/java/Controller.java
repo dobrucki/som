@@ -39,6 +39,9 @@ public class Controller {
     @FXML
     private TextField learningRateMax;
 
+    @FXML
+    private TextField filePath;
+
 
     @FXML
     public void handleStart() {
@@ -61,12 +64,13 @@ public class Controller {
         final double lambdaMax = Double.parseDouble(this.lambdaMax.getText());
         final double learningRateMin = Double.parseDouble(this.learningRateMin.getText());
         final double learningRateMax = Double.parseDouble(this.learningRateMax.getText());
+        final String filePath = this.filePath.getText();
         final NeuralGas ng = new NeuralGas(numberOfNeurons, numberOfIterations, lambdaMin, lambdaMax, learningRateMin, learningRateMax);
         gc = plot.getGraphicsContext2D();
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, plot.getWidth(), plot.getHeight());
         CsvReader reader = new CsvReader();
-        points = reader.read("/users/dobrucki/uczelnia/iad/som/data.csv");
+        points = reader.read(filePath);
         squeeze(points);
         AnimationTimer animationTimer = new AnimationTimer() {
             final int counter = numberOfIterations;

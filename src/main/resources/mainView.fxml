@@ -43,13 +43,13 @@
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <Label layoutX="96.0" layoutY="260.0" text="Label">
+            <Label layoutX="96.0" layoutY="260.0" text="Ścieżka pliku">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
-            <TextField />
-            <Button mnemonicParsing="false" text="Button" />
+            <TextField fx:id="filePath"/>
+            <Button mnemonicParsing="false" text="Plik" />
             <Button mnemonicParsing="false" onAction="#handleStart" prefWidth="206.0" text="Start">
                <VBox.margin>
                   <Insets top="110.0" />
