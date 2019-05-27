@@ -31,15 +31,15 @@
             <Label layoutX="96.0" layoutY="210.0" text="Learning rate maksymalny" />
             <TextField fx:id="learningRateMax" layoutX="10.0" layoutY="230.0" />
             <Label layoutX="96.0" layoutY="210.0" text="Algorytm" />
-            <ChoiceBox prefWidth="206.0">
+            <ChoiceBox fx:id="algorithms" prefWidth="206.0" value="Neural gas">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="Kohonen" />
-                     <String fx:value="gaz neuronowy" />
-                     <String fx:value="k-średnich" />
+                     <String fx:value="Neural gas" />
+                     <String fx:value="K-means" />
                   </FXCollections>
                </items>
             </ChoiceBox>

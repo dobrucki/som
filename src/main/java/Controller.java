@@ -1,7 +1,11 @@
 import javafx.animation.AnimationTimer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -42,22 +46,11 @@ public class Controller {
     @FXML
     private TextField filePath;
 
+    @FXML
+    private ChoiceBox<String> algorithms;
 
     @FXML
     public void handleStart() {
-//        generatePoints();
-        handleNeuralGas();
-    }
-
-    private void generatePoints() {
-        this.points = new double[50][2];
-        for (int i = 0; i < points.length; i++) {
-            points[i][0] = Math.random();
-            points[i][1] = Math.random();
-        }
-    }
-
-    private void handleNeuralGas() {
         final int numberOfNeurons = Integer.parseInt(this.numberOfNeurons.getText());
         final int numberOfIterations = Integer.parseInt(this.numberOfIterations.getText());
         final double lambdaMin = Double.parseDouble(this.lambdaMin.getText());
@@ -65,7 +58,15 @@ public class Controller {
         final double learningRateMin = Double.parseDouble(this.learningRateMin.getText());
         final double learningRateMax = Double.parseDouble(this.learningRateMax.getText());
         final String filePath = this.filePath.getText();
-        final NeuralGas ng = new NeuralGas(numberOfNeurons, numberOfIterations, lambdaMin, lambdaMax, learningRateMin, learningRateMax);
+        final String s = algorithms.getValue();
+        Algorithm algorithmTmp = null;
+        if (s.equals("Neural gas")) {
+            algorithmTmp = new NeuralGas(numberOfNeurons, numberOfIterations, lambdaMin, lambdaMax, learningRateMin, learningRateMax);
+        } else if (s.equals("Kohonen")) {
+            algorithmTmp = new Kohonen(numberOfNeurons, numberOfIterations, lambdaMin, lambdaMax, learningRateMin, learningRateMax);
+        }
+        final Algorithm algorithm = algorithmTmp;
+
         gc = plot.getGraphicsContext2D();
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, plot.getWidth(), plot.getHeight());
@@ -78,8 +79,8 @@ public class Controller {
 
             @Override
             public void handle(long now) {
-                ng.adaptWeights(i, points);
-                draw(ng.getNeurons());
+                algorithm.adaptWeights(i, points);
+                draw(algorithm.getNeurons());
                 progressBar.setProgress((double) i / counter);
 
                 i += 1;
@@ -87,6 +88,19 @@ public class Controller {
             }
         };
         animationTimer.start();
+
+
+
+
+
+
+    }
+
+    private void handleKohonen() {
+    }
+
+    private void handleNeuralGas() {
+
     }
 
     private void draw(final double[][] neurons) {

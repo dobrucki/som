@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class NeuralGas {
+public class NeuralGas implements Algorithm{
 
     private double lambdaMin = 0.01d;
     private double lambdaMax = 10.0d;
@@ -40,15 +40,15 @@ public class NeuralGas {
 
     }
 
-    public double gFunc(final int pos, final int k) {
+    private double gFunc(final int pos, final int k) {
         return Math.exp(-pos / lambda(k));
     }
 
-    public double lambda(final int k) {
+    private double lambda(final int k) {
         return lambdaMax * Math.pow((lambdaMin / lambdaMax), (k / iters));
     }
 
-    public double learningRate(final int k) {
+    private double learningRate(final int k) {
         return learningRateMax * Math.pow((learningRateMin / learningRateMax), (k / iters));
     }
 
