@@ -18,16 +18,18 @@
       <Canvas fx:id="plot" height="572.0" layoutX="14.0" layoutY="14.0" width="572.0" />
       <VBox alignment="TOP_CENTER" layoutX="600.0" layoutY="14.0" prefHeight="572.0" prefWidth="206.0" spacing="3.0">
          <children>
-            <Label text="Label" />
-            <TextField />
-            <Label layoutX="10.0" layoutY="10.0" text="Label" />
-            <TextField layoutX="10.0" layoutY="27.0" />
-            <Label layoutX="10.0" layoutY="54.0" text="Label" />
-            <TextField layoutX="10.0" layoutY="71.0" />
-            <Label layoutX="10.0" layoutY="98.0" text="Label" />
-            <TextField layoutX="10.0" layoutY="115.0" />
-            <Label layoutX="10.0" layoutY="142.0" text="Label" />
-            <TextField layoutX="10.0" layoutY="159.0" />
+            <Label text="Liczba neuronów" />
+            <TextField fx:id="numberOfNeurons" />
+            <Label layoutX="10.0" layoutY="10.0" text="Liczba iteracji" />
+            <TextField fx:id="numberOfIterations" layoutX="10.0" layoutY="27.0" />
+            <Label layoutX="10.0" layoutY="54.0" text="Lambda minimalna" />
+            <TextField fx:id="lambdaMin" layoutX="10.0" layoutY="71.0" />
+            <Label layoutX="10.0" layoutY="98.0" text="Lambda maksymalna" />
+            <TextField fx:id="lambdaMax" layoutX="10.0" layoutY="115.0" />
+            <Label layoutX="10.0" layoutY="142.0" text="Learning rate minimalny" />
+            <TextField fx:id="learningRateMin" layoutX="10.0" layoutY="159.0" />
+            <Label layoutX="96.0" layoutY="210.0" text="Learning rate maksymalny" />
+            <TextField fx:id="learningRateMax" layoutX="10.0" layoutY="230.0" />
             <Label layoutX="96.0" layoutY="210.0" text="Algorytm" />
             <ChoiceBox prefWidth="206.0">
                <VBox.margin>
@@ -56,7 +58,7 @@
                   <Font name="Avenir Black" size="18.0" />
                </font>
             </Button>
-            <ProgressBar prefWidth="206.0" progress="0.0" fx:id="progressBar">
+            <ProgressBar fx:id="progressBar" prefWidth="206.0" progress="0.0">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

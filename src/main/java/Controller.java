@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 
@@ -17,6 +18,26 @@ public class Controller {
 
     @FXML
     private ProgressBar progressBar;
+
+
+    // Neural gas properties
+    @FXML
+    private TextField numberOfNeurons;
+
+    @FXML
+    private TextField numberOfIterations;
+
+    @FXML
+    private TextField lambdaMin;
+
+    @FXML
+    private TextField lambdaMax;
+
+    @FXML
+    private TextField learningRateMin;
+
+    @FXML
+    private TextField learningRateMax;
 
 
     @FXML
@@ -34,15 +55,21 @@ public class Controller {
     }
 
     private void handleNeuralGas() {
-        final NeuralGas ng = new NeuralGas(30, 200);
+        final int numberOfNeurons = Integer.parseInt(this.numberOfNeurons.getText());
+        final int numberOfIterations = Integer.parseInt(this.numberOfIterations.getText());
+        final double lambdaMin = Double.parseDouble(this.lambdaMin.getText());
+        final double lambdaMax = Double.parseDouble(this.lambdaMax.getText());
+        final double learningRateMin = Double.parseDouble(this.learningRateMin.getText());
+        final double learningRateMax = Double.parseDouble(this.learningRateMax.getText());
+        final NeuralGas ng = new NeuralGas(numberOfNeurons, numberOfIterations, lambdaMin, lambdaMax, learningRateMin, learningRateMax);
         gc = plot.getGraphicsContext2D();
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, plot.getWidth(), plot.getHeight());
         CsvReader reader = new CsvReader();
-        points = reader.read("C:\\Users\\jd\\Desktop\\d.csv");
+        points = reader.read("/users/dobrucki/uczelnia/iad/som/data.csv");
         squeeze(points);
         AnimationTimer animationTimer = new AnimationTimer() {
-            final int counter = 300;
+            final int counter = numberOfIterations;
             int i = 0;
 
             @Override

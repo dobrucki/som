@@ -9,10 +9,13 @@ public class NeuralGas {
     private int iters;
     private double[][] neurons;
 
-    public NeuralGas(final int numberOfNeurons, final int numberOfIterations) {
+    public NeuralGas(final int numberOfNeurons, final int numberOfIterations, double lambdaMin, double lambdaMax, double learningRateMin, double learningRateMax) {
         this.iters = numberOfIterations;
-
         this.neurons = new double[numberOfNeurons][2];
+        this.lambdaMin = lambdaMin;
+        this.lambdaMax = lambdaMax;
+        this.learningRateMin = learningRateMin;
+        this.learningRateMax = learningRateMax;
         Random rnd = new Random();
         for (int i = 0; i < numberOfNeurons; i++) {
             neurons[i][0] = 0.25d + rnd.nextDouble() / 2;
